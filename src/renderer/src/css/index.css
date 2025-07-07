@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "flyonui" {
+  themes: light --default, dark --prefersdark;
+  exclude: scrollbar;
+}
+@plugin "@iconify/tailwind4";
+@import "./utility.css";
+@import "./transition.css";
+
+html {
+  @apply overflow-hidden;
+}
+
+#app {
+  @apply w-full h-screen flex flex-col  overflow-hidden;
+}
+
+.btn:not(.btn-circle):not(.rounded-full) {
+  @apply rounded font-bold;
+}
+
+.vue-slider-rail {
+  background-color: var(--color-base-300) !important;
+}
+
+.slider-base,
+.slider-connects {
+  @apply bg-base-300!;
+}
+.slider-connect {
+  @apply bg-base-100!;
+}
+
+.slider-handle.slider-handle-lower {
+  @apply bg-secondary size-3! mt-[3px] shadow-none! cursor-auto;
+}
+
+.plyr__video-wrapper {
+  @apply flex!;
+}
+
+.plyr__poster {
+  @apply left-0! right-0! mx-auto! max-w-3xl xl:max-w-5xl;
+  /* left: 0 !important;
+  right: 0 !important;
+  margin: 0 auto !important;
+  max-width: 768px !important; */
+  view-transition-name: mv-cover;
+}
+
+.plyr__controls {
+  view-transition-name: plyr-controls;
+}

@@ -1,0 +1,66 @@
+@utility drag {
+  -webkit-app-region: drag;
+}
+
+@utility no-drag {
+  -webkit-app-region: no-drag;
+}
+
+@utility abs-c {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@property --s {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@utility scroll-area {
+  scrollbar-gutter: stable;
+  transition: --s 0.5s ease;
+  @apply overflow-auto;
+  &::-webkit-scrollbar {
+    @apply w-2 bg-transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    @apply rounded bg-(--s);
+  }
+  &:hover {
+    --s: rgba(0, 0, 0, 0.3);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    --s: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@utility bg-gradient-aside-and-main {
+  background: linear-gradient(
+      0deg,
+      var(--color-base-200),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(180deg, var(--color-base-100), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, var(--color-base-200), rgba(0, 0, 255, 0) 70.71%);
+}
+
+@utility bg-gradient-footer {
+  @apply bg-gradient-to-tl from-base-300 to-base-200 to-50%;
+}
+
+@theme {
+  --vtn-header: header;
+  --vtn-footer: footer;
+  --vtn-cover: cover;
+  --vtn-logo: logo;
+  --vtn-logo-arrow: logo-arrow;
+  --vtn-login: login;
+  --vtn-my-like-text: my-like-text;
+  --vtn-subscribed-playlist: subscribed-playlist;
+  --vtn-subscribed-playlist-text: subscribed-playlist-text;
+  --vtn-mv-cover: mv-cover;
+}
+
+@utility transition-name-* {
+  view-transition-name: --value(--vtn- *);
+}

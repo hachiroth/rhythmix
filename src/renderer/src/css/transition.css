@@ -1,0 +1,52 @@
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-group(header),
+::view-transition-group(footer) {
+  z-index: 10;
+}
+
+::view-transition-group(cover) {
+  z-index: 1;
+}
+
+::view-transition-old(mv-cover),
+::view-transition-new(mv-cover) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+  /* overflow: clip; */
+  border-radius: 0.25rem;
+}
+
+.mv-detail::view-transition-old(mv-cover),
+.mv-detail::view-transition-new(mv-cover) {
+  @apply max-w-3xl xl:max-w-5xl;
+  margin: 0 auto;
+}
+
+.artist::view-transition-new(mv-cover) {
+  object-fit: contain;
+}
+
+.artist::view-transition-old(mv-cover) {
+  object-fit: cover;
+}
+
+::view-transition-group(plyr-controls) {
+  z-index: 10;
+}
+
+::view-transition-old(qr-code) {
+  clip-path: polygon(100% 0, 0 0, 0 100%);
+}
